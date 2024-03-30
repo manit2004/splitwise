@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ledger</title>
+</head>
+<body>
+    <h1>Ledger</h1>
+    <p>Friend's amount: {{ friend_amount }}</p>
+    <button onclick="location.href='/ledger/{{ friend_email }}/expense'">Add Expense</button>
+    <button onclick="location.href='/ledger/{{ friend_email }}/pay'">Settle Up</button>
+    <ul>
+        {% for date, purpose, amount, _, _, sign in transactions %}
+            <li>{{ date }}: {{ purpose }} : {{ sign }}{{ amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

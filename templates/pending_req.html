@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pending Requests</title>
+</head>
+<body>
+    <h1>Pending Requests</h1>
+
+    <h2>Sent Requests</h2>
+    <div id="sent-requests">
+        {% for email, name in sent_requests %}
+            <p>{{ email }}: {{ name }}</p>
+        {% endfor %}
+    </div>
+
+    <h2>Received Requests</h2>
+    <div id="received-requests">
+        {% for email, name in received_requests %}
+            <form action="/show_requests" method="post">
+                <p>{{ name }} ({{ email }})</p>
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="action" value="1">
+                <input type="submit" value="Accept">
+            </form>
+            <form action="/show_requests" method="post">
+                <input type="hidden" name="email" value="{{ email }}">
+                <input type="hidden" name="action" value="-1">
+                <input type="submit" value="Decline">
+            </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

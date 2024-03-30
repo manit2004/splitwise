@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome, {{ name }}!</h1>
+    <p>Your email is {{ email }}.</p>
+    <button onclick="location.href='/add_friend'">Add Friend</button>
+    <button onclick="location.href='/show_requests'">Show Friend Requests</button>
+    <button onclick="location.href='/logout'">Logout</button>
+    <h2>Friends</h2>
+    <ul>
+        {% for name, amount, friend_email in friends %}
+            <li><a href="/ledger/{{ friend_email }}">{{ name }}</a>: {{ amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
